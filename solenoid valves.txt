@@ -1,0 +1,7 @@
+flow-control logbook [Fall Semester, 2024]
+Bruce Le, ___
+September 3rd, 2024
+ - Initiated project, proposed solenoid valve manager
+ - Placed order for three solenoid valves
+ - Set up github directories
+September 5th, 2024
