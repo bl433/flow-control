@@ -1,4 +1,4 @@
-flow-control logbook [Fall Semester, 2024]
+flow-control (12V, 2A each) logbook [Fall Semester, 2024]
 Bruce Le, ___
 September 3rd, 2024
  - Initiated project, proposed solenoid valve manager
