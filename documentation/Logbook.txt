@@ -5,3 +5,4 @@ September 3rd, 2024
  - Placed order for two solenoid valves
  - Set up github directories
 September 5th, 2024
+ - Sorted github directories

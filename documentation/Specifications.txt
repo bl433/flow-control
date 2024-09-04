@@ -1,0 +1,18 @@
+Suggested components:
+ - resistors
+ - MOSFET transistors or relays
+
+Main Switch:
+ - single-pole, single-throw
+ - final decision: entire solenoid valve is off if this is off
+
+Potentiometer Knob:
+ - turnable, variable resistor
+ - solenoid valve increases flow output as knob turns to reduce resistance (to increase allowed voltage to solenoid valve)
+ - opposite if knob turns to increase resistance (to decrease allowed voltage to solenoid valve)
+
+Solenoid Valve:
+ - handles liquid transfer based on Main Switch and Potentiometer Knob
+ - 3/4in diameter
+ - 12V, 2A input
+ ~ 30 min active time until it begins to overheat
