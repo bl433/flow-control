@@ -1,0 +1,2 @@
+This directory handles all of the hardware's programming - probably coded in C, C#, not sure.
+Put code scripts, psuedocoding, or flowchart sketches here.
