@@ -4,13 +4,29 @@ We didn't create things out of thin air. We'll be listing what's been made and h
 - Github, to organize this entire directory and have it presentable in a professional manner.
 - Github Desktop, to organize the directory from the computer standpoint.
 - Microsoft Word (or Google Docs), to create reports and documents for professional exposure.
+- Arduino (we'll need to minimize it.)
+ - https://www.instructables.com/Bare-Minimum-Arduino-on-Breadboard/
 
 [Hardwares]
 - Solenoid liquid valves, to control water or fertilizer flowing through the pipe.
  [https://www.amazon.com/gp/product/B018WRJYOU/]
+- 12V power supply or renewable source (solar panel)
+ - step up converter
+- and? 4x 18650 batteries in series
+ - 4S BMS
+- 5V regulator or 5V buck converter
+- LEDs
+- i think we'll need to bring in the arduino for this.
+- at LEAST just bring in the arduino chip and minimize it.
+- For each lane:
+ - 1x solenoid liquid valve
+ - 2x potentiometer knobs
+ - 1x single-pole-single-throw switch
+ - 1x green LED (active), 1x red LED (blinking if waiting, solid red if disabled)
+  - neither LEDs will be on until a solenoid is connected to it.
 
 [Components]
 - MOSFET transistors, to enable or disable the solenoid valves.
 - Resistors, to regulate voltage.
 - Switches, to decide if the valve would be on or off.
-- Potentiometers, to adjust the flow of the solenoid.
+- Potentiometers, to adjust the open duration and delay of the solenoid.

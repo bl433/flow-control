@@ -6,3 +6,10 @@ September 3rd, 2024
  - Set up github directories
 September 5th, 2024
  - Sorted github directories
+September 10th, 2024
+ - Drawn block diagram and circuit drafts
+ - Changed up specifications
+  - Changed from partially open solenoid valves to cyclically open solenoid valves
+September 12th, 2024
+ - Decided to integrate Arduino
+  - Requires the Arduino code and USB to serial conversion

@@ -1,6 +1,8 @@
 Suggested components:
  - resistors
  - MOSFET transistors or relays
+ - indicator LEDs
+ - 5V voltage regulators
 
 Main Switch:
  - single-pole, single-throw
@@ -8,11 +10,14 @@ Main Switch:
 
 Potentiometer Knob:
  - turnable, variable resistor
- - solenoid valve increases flow output as knob turns to reduce resistance (to increase allowed voltage to solenoid valve)
- - opposite if knob turns to increase resistance (to decrease allowed voltage to solenoid valve)
+ - delays the solenoid valve for a variable amount of hours depending how far the potentiometer turns
+ - solenoid valve is allowed a specific duty cycle to conserve water
+ - turning the knob at maximum should allow the solenoid to open every 24 hours,
+ - while turning the knob at minimum should allow the solenoid to open every 1 hours.
+ - another knob can be used to decide how LONG the solenoid valve opens.
 
 Solenoid Valve:
- - handles liquid transfer based on Main Switch and Potentiometer Knob
+ - handles liquid transfer based on Main Switch ~~and Potentiometer Knob~~
  - 3/4in diameter
  - 12V, 2A input
  ~ 30 min active time until it begins to overheat
