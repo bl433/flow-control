@@ -6,3 +6,5 @@ September 3rd, 2024
  - Set up github directories
 September 5th, 2024
  - Sorted github directories
+September 12th, 2024
+ - Added parts list
