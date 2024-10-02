@@ -386,6 +386,34 @@
     [
       "c8fb4b8d-0361-4798-b029-ef8709a5481b",
       "Root"
+    ],
+    [
+      "862b8b50-7656-48d5-b6a2-1748483f71db",
+      "Solenoid 1 Inputs"
+    ],
+    [
+      "f632a596-2a77-458a-80f1-cd2c27313419",
+      "Solenoid 2 Inputs"
+    ],
+    [
+      "21aff996-0b09-425d-9ddf-2ee2460dab57",
+      "Microcontroller"
+    ],
+    [
+      "e7501852-2e13-483b-b108-2a6b83c28583",
+      "Solenoid 1 Output"
+    ],
+    [
+      "26d69ebe-2b14-4723-aef8-59425f36d1f3",
+      "Solenoid 2 Output"
+    ],
+    [
+      "bda1ed04-6897-4e69-b924-e662610f3fe6",
+      "Solenoid 1 Display"
+    ],
+    [
+      "ff65343e-e678-4d54-acd4-5f7145ef73fd",
+      "Solenoid 2 Display"
     ]
   ],
   "text_variables": {}
