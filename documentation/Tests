@@ -1,0 +1,9 @@
+Felipe's Tests
+
+Test 1: Valve Testing: The solenoid valve is #1 priority so I am listing it as the first test. We want to make our valve is working properly and flowing water like we want it to. 
+
+Test 2: Real Time Clock: One of my main takeaways after the presentation was the inclusion of a real time clock. My solution at first was to set a timer that would indicate the valve when to stop flowing. However, the inclusion of a real time clock would make it easier for the valve to know at what time it has to stop. Testing the clock is a second priority as it is a key component to show how long the valve will be on and off.
+
+Test 3: Potentiometer knob: The knob will open and close the valve. If we can individually test them to make sure they work properly could help us on our project in the long run. The functions we want to test is delaying the valve, turning at maximum and minimum power. 
+
+Test 4: Relay test: The relays will also help the valve work, and it has become a priority as during our current test, one of the transistors that'll make the relay work burned out. As a result, we need to find the correct transistor that will be able to withstand the appropriate power.
