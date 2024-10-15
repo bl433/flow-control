@@ -1,4 +1,4 @@
-Test Procedures for the Flow Control manager [October 15th, 2024]:
+Bruce Le's Test Procedures for the Flow Control manager [October 15th, 2024]:
 
  [Startup process:]
   - The product is energized as soon as it's plugged in. To ensure the product is working afterwards, it should light up all the RED (delay) LEDs for a few seconds.
