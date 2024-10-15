@@ -1778,6 +1778,31 @@
 		)
 		(uuid "fe8eb708-c795-4032-872d-93ca72de6322")
 	)
+	(rectangle
+		(start 81.28 101.6)
+		(end 152.4 125.73)
+		(stroke
+			(width 0.0508)
+			(type solid)
+			(color 10 131 255 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 9316b791-f9ab-4af9-849c-f634efc9bf9a)
+	)
+	(text "Outputs"
+		(exclude_from_sim no)
+		(at 147.574 124.206 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+		)
+		(uuid "9d6d7533-7d99-430a-a0c7-8751ec2183f8")
+	)
 	(symbol
 		(lib_id "power:GND")
 		(at 24.13 83.82 270)

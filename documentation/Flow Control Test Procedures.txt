@@ -1,0 +1,24 @@
+Test Procedures for the Flow Control manager [October 15th, 2024]:
+
+ [Startup process:]
+  - The product is energized as soon as it's plugged in. To ensure the product is working afterwards, it should light up all the RED (delay) LEDs for a few seconds.
+  - The purpose of this test is to verify that the product will work as intended with some kind of "sanity test." If it does not have its LEDs light up for a few seconds, then its instructions were incorrectly uploaded, or some components may have failed.
+
+ [Manual activation:]
+  - Press the duration encoder knob to manually enable the solenoid, independent of the cycle.
+  - This can be ideal for sampling where the water will go when connecting it to a pipe network.
+  - The purpose of this test is to verify that the solenoids themselves are working as intended, meaning the solenoids can activate as intended when the delay cycle passes.
+
+ [Template activation cycle:]
+  - A small-scale test instance. On a duration of 30 seconds, and a delay of 60 seconds, the solenoid should wait 60 seconds before opening for 30 seconds. This cycle must constantly repeat.
+  - During this time, the red LED must be blinking, showing that the solenoid is currently on its delay cycle, then the green LED must be solid for 30 seconds, showing that it's then on an active cycle.
+  - The purpose of this test is to verify that the delay and duration cycles work to the user's intent. The duration and delay timers can be increased until it can be considered comfortable to perform a 10-hour delay or greater.
+
+ [Adjusting individual settings:]
+  - Each of the two encoder knobs can be turned to change the settings for the respective solenoid. The settings must be independent for each solenoid.
+   [IE. Solenoid 1 has a duration of 5 minutes 05:00 and a delay of 20 hours 20:00
+        Solenoid 2 has a duration of 10 minutes 10:00 and a delay of 12 hours 12:00]
+  - The purpose of this test is to verify that each solenoid will have their own individual settings, as well as opening and closing at different intervals as per the solenoid's provided duration and delay.
+  - A solenoid should not follow the duration or delay that is assigned to another solenoid.
+ 
+ 
