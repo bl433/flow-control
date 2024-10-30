@@ -457,49 +457,51 @@
 				)
 			)
 		)
-		(symbol "Simulation_SPICE:NPN"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0)
-			)
+		(symbol "Transistor_FET:MMBFJ113"
+			(pin_names hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "Q"
-				(at -2.54 7.62 0)
+				(at 5.08 1.905 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "NPN"
-				(at -2.54 5.08 0)
+			(property "Value" "MMBFJ113"
+				(at 5.08 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" ""
-				(at 63.5 0 0)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
 				(effects
 					(font
 						(size 1.27 1.27)
+						(italic yes)
 					)
+					(justify left)
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-				(at 63.5 0 0)
+			(property "Datasheet" "https://www.onsemi.com/pub/Collateral/MMBFJ113-D.PDF"
+				(at 5.08 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 					(hide yes)
 				)
 			)
-			(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(property "Description" "2mA min, 35V, 100mOhm max, 0.5-3V Vgs(off), N-Channel JFET, SOT-23"
 				(at 0 0 0)
 				(effects
 					(font
@@ -508,7 +510,7 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Device" "NPN"
+			(property "ki_keywords" "N-Channel FET Transistor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -517,7 +519,7 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Type" "GUMMELPOON"
+			(property "ki_fp_filters" "SOT?23*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -526,40 +528,10 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Pins" "1=C 2=B 3=E"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "simulation"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "NPN_0_1"
+			(symbol "MMBFJ113_0_1"
 				(polyline
 					(pts
-						(xy -2.54 0) (xy 0.635 0)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 0.635) (xy 2.54 2.54)
+						(xy 0.254 0) (xy -2.54 0)
 					)
 					(stroke
 						(width 0)
@@ -571,10 +543,10 @@
 				)
 				(polyline
 					(pts
-						(xy 2.794 -1.27) (xy 2.794 -1.27)
+						(xy 0.254 1.905) (xy 0.254 -1.905)
 					)
 					(stroke
-						(width 0.1524)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -583,19 +555,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.794 -1.27) (xy 2.794 -1.27)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 -0.635) (xy 2.54 -2.54) (xy 2.54 -2.54)
+						(xy 2.54 -2.54) (xy 2.54 -1.397) (xy 0.254 -1.397)
 					)
 					(stroke
 						(width 0)
@@ -607,10 +567,10 @@
 				)
 				(polyline
 					(pts
-						(xy 0.635 1.905) (xy 0.635 -1.905) (xy 0.635 -1.905)
+						(xy 2.54 2.54) (xy 2.54 1.397) (xy 0.254 1.397)
 					)
 					(stroke
-						(width 0.508)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -619,7 +579,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778) (xy 1.27 -1.778)
+						(xy 0 0) (xy -1.016 0.381) (xy -1.016 -0.381) (xy 0 0)
 					)
 					(stroke
 						(width 0)
@@ -641,11 +601,11 @@
 					)
 				)
 			)
-			(symbol "NPN_1_1"
-				(pin open_collector line
+			(symbol "MMBFJ113_1_1"
+				(pin passive line
 					(at 2.54 5.08 270)
 					(length 2.54)
-					(name "C"
+					(name "D"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -660,10 +620,10 @@
 						)
 					)
 				)
-				(pin input line
-					(at -5.08 0 0)
+				(pin passive line
+					(at 2.54 -5.08 90)
 					(length 2.54)
-					(name "B"
+					(name "S"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -678,10 +638,10 @@
 						)
 					)
 				)
-				(pin open_emitter line
-					(at 2.54 -5.08 90)
+				(pin input line
+					(at -5.08 0 0)
 					(length 2.54)
-					(name "E"
+					(name "G"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -700,7 +660,13 @@
 		)
 	)
 	(junction
-		(at 58.42 59.69)
+		(at 52.07 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0147b9f4-637f-4d78-8a0e-c213fff2ebfc")
+	)
+	(junction
+		(at 58.42 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2851274e-1558-4f3a-b610-0c2ae983503a")
@@ -712,10 +678,10 @@
 		(uuid "568292be-1dd7-4f76-abdc-4a9467ff4800")
 	)
 	(junction
-		(at 52.07 45.72)
+		(at 52.07 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "99ac66a5-e83e-474a-849d-6d0bcab213e9")
+		(uuid "f9dbaa04-0671-4f16-9ea2-872af5ecacdd")
 	)
 	(wire
 		(pts
@@ -749,7 +715,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 59.69) (xy 58.42 66.04)
+			(xy 58.42 69.85) (xy 58.42 76.2)
 		)
 		(stroke
 			(width 0)
@@ -759,13 +725,33 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 66.04) (xy 60.96 57.15)
+			(xy 60.96 76.2) (xy 60.96 67.31)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "421e4140-d20f-42f0-97f4-ebf066a1deb3")
+	)
+	(wire
+		(pts
+			(xy 43.18 48.26) (xy 44.45 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44375e9f-60a6-4a0d-8216-925517b25734")
+	)
+	(wire
+		(pts
+			(xy 52.07 58.42) (xy 52.07 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ab85693-b383-48ae-83d7-060b21b2e49e")
 	)
 	(wire
 		(pts
@@ -799,16 +785,6 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 45.72) (xy 52.07 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "81429d61-1462-416e-a78d-d0806cefff14")
-	)
-	(wire
-		(pts
 			(xy 52.07 22.86) (xy 52.07 25.4)
 		)
 		(stroke
@@ -829,7 +805,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 57.15) (xy 46.99 57.15)
+			(xy 43.18 67.31) (xy 46.99 67.31)
 		)
 		(stroke
 			(width 0)
@@ -849,7 +825,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 59.69) (xy 58.42 59.69)
+			(xy 43.18 69.85) (xy 58.42 69.85)
 		)
 		(stroke
 			(width 0)
@@ -859,7 +835,27 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 43.18) (xy 58.42 59.69)
+			(xy 52.07 45.72) (xy 52.07 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d20ec692-dc1a-40b4-afc6-88993752c7b9")
+	)
+	(wire
+		(pts
+			(xy 52.07 48.26) (xy 52.07 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4205f92-a0cc-4c63-a837-5eacfdbf6a1b")
+	)
+	(wire
+		(pts
+			(xy 58.42 43.18) (xy 58.42 69.85)
 		)
 		(stroke
 			(width 0)
@@ -879,7 +875,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 57.15) (xy 57.15 57.15)
+			(xy 60.96 67.31) (xy 57.15 67.31)
 		)
 		(stroke
 			(width 0)
@@ -889,7 +885,7 @@
 	)
 	(hierarchical_label "GND"
 		(shape input)
-		(at 43.18 59.69 180)
+		(at 43.18 69.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -901,7 +897,7 @@
 	)
 	(hierarchical_label "12V_IN"
 		(shape input)
-		(at 43.18 57.15 180)
+		(at 43.18 67.31 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -935,6 +931,18 @@
 		)
 		(uuid "9681884d-4041-46ea-97ef-7a2ae7e0a47b")
 	)
+	(hierarchical_label "GND"
+		(shape input)
+		(at 43.18 48.26 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e6647afc-f883-4ab3-8ba7-98aeed4f6311")
+	)
 	(symbol
 		(lib_id "Device:R")
 		(at 43.18 31.75 0)
@@ -962,7 +970,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
 			(at 41.402 31.75 90)
 			(effects
 				(font
@@ -1006,7 +1014,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Socket")
-		(at 60.96 71.12 270)
+		(at 60.96 81.28 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1015,7 +1023,7 @@
 		(fields_autoplaced yes)
 		(uuid "59a665fc-a83c-428f-8f14-c9ae6a11494f")
 		(property "Reference" "J2"
-			(at 62.23 69.2149 90)
+			(at 62.23 79.3749 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1024,7 +1032,7 @@
 			)
 		)
 		(property "Value" "SOL2_PORT"
-			(at 62.23 71.7549 90)
+			(at 62.23 81.9149 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1032,8 +1040,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 60.96 71.12 0)
+		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
+			(at 60.96 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1042,7 +1050,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 60.96 71.12 0)
+			(at 60.96 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1051,7 +1059,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 60.96 71.12 0)
+			(at 60.96 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1101,7 +1109,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_THT:LED_Oval_W5.2mm_H3.8mm"
 			(at 43.18 39.37 0)
 			(effects
 				(font
@@ -1144,33 +1152,54 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:NPN")
-		(at 52.07 54.61 270)
+		(lib_id "Transistor_FET:MMBFJ113")
+		(at 52.07 64.77 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "93b62acb-6eff-4b8a-a3dd-5fa926764f7d")
-		(property "Reference" "Q2"
-			(at 52.07 60.96 90)
+		(uuid "711e5ed4-5472-46f3-84a7-986470d7c081")
+		(property "Reference" "Q3"
+			(at 52.07 71.12 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SOL2_NPN"
-			(at 52.07 63.5 90)
+		(property "Value" "SOL2_NFET"
+			(at 52.07 73.66 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 52.07 118.11 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 50.165 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/MMBFJ113-D.PDF"
+			(at 48.26 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "2mA min, 35V, 100mOhm max, 0.5-3V Vgs(off), N-Channel JFET, SOT-23"
+			(at 52.07 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1178,8 +1207,53 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
-			(at 52.07 118.11 0)
+		(pin "2"
+			(uuid "2f4892da-d019-4a90-89a2-bee759404b13")
+		)
+		(pin "1"
+			(uuid "a2955642-6a2c-4fcf-a85e-dc9add1cbda9")
+		)
+		(pin "3"
+			(uuid "e672885f-5f03-4a37-8ea5-e9e34fd827ac")
+		)
+		(instances
+			(project "flowcontrol"
+				(path "/c8fb4b8d-0361-4798-b029-ef8709a5481b/26d69ebe-2b14-4723-aef8-59425f36d1f3"
+					(reference "Q3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 52.07 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "971b2e13-687e-4b62-ab7f-b49c14bd48e0")
+		(property "Reference" "R6"
+			(at 46.482 53.594 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1kO"
+			(at 45.974 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
+			(at 50.292 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1187,7 +1261,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+		(property "Datasheet" "~"
 			(at 52.07 54.61 0)
 			(effects
 				(font
@@ -1196,25 +1270,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Device" "NPN"
-			(at 52.07 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "GUMMELPOON"
-			(at 52.07 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=C 2=B 3=E"
+		(property "Description" "Resistor"
 			(at 52.07 54.61 0)
 			(effects
 				(font
@@ -1224,18 +1280,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "ab51ea6c-4e51-4dff-8250-293f18c0ae1f")
+			(uuid "d4a17a61-04c9-49c1-9e83-483257f6809a")
 		)
 		(pin "1"
-			(uuid "c8cdf317-2c02-4b90-9b50-a4c41369ef96")
-		)
-		(pin "3"
-			(uuid "b0300cb1-e241-49d6-8bea-aeae2274d569")
+			(uuid "3009d632-8a17-4151-b8c1-1fe586f90db5")
 		)
 		(instances
 			(project "flowcontrol"
 				(path "/c8fb4b8d-0361-4798-b029-ef8709a5481b/26d69ebe-2b14-4723-aef8-59425f36d1f3"
-					(reference "Q2")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -1269,7 +1322,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_THT:LED_Oval_W5.2mm_H3.8mm"
 			(at 58.42 39.37 0)
 			(effects
 				(font
@@ -1338,7 +1391,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
 			(at 50.292 31.75 90)
 			(effects
 				(font
@@ -1408,7 +1461,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
 			(at 56.642 31.75 90)
 			(effects
 				(font
@@ -1445,6 +1498,75 @@
 			(project "flowcontrol"
 				(path "/c8fb4b8d-0361-4798-b029-ef8709a5481b/26d69ebe-2b14-4723-aef8-59425f36d1f3"
 					(reference "R2LED_R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 48.26 48.26 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bf549ece-d62a-4906-8e10-cb6a90cc122f")
+		(property "Reference" "R5"
+			(at 46.482 44.704 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10kO"
+			(at 45.974 46.482 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
+			(at 48.26 46.482 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 48.26 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 48.26 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "614e4b3b-ff9a-4ca1-98ef-904e03bba619")
+		)
+		(pin "1"
+			(uuid "15eef22d-c94c-4e30-ad71-6a389cda027e")
+		)
+		(instances
+			(project "flowcontrol"
+				(path "/c8fb4b8d-0361-4798-b029-ef8709a5481b/26d69ebe-2b14-4723-aef8-59425f36d1f3"
+					(reference "R5")
 					(unit 1)
 				)
 			)

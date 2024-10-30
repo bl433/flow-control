@@ -1167,7 +1167,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E_Vertical_H20mm"
 			(at 101.6 31.496 0)
 			(effects
 				(font
@@ -1244,7 +1244,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_DIP_SPSTx01_Slide_6.7x4.1mm_W7.62mm_P2.54mm_LowProfile"
 			(at 76.2 64.77 0)
 			(effects
 				(font
@@ -1318,7 +1318,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E_Vertical_H20mm"
 			(at 72.39 31.496 0)
 			(effects
 				(font

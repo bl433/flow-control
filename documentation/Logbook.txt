@@ -17,3 +17,9 @@ September 12th, 2024
 =======
 September 12th, 2024
  - Added parts list
+
+=======
+October 17th, 2024
+ - Test operated solenoids through an Arduino blink function
+October 28th, 2024
+ - Assembled solderless breadboard circuit and installed waterproof cables for solenoids
