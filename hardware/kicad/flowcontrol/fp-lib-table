@@ -1,4 +1,5 @@
 (fp_lib_table
   (version 7)
   (lib (name "Rotary_Encoder")(type "KiCad")(uri "C:/Users/Jake4/Downloads/Rotary_Encoder.pretty")(options "")(descr ""))
+  (lib (name "Display_7Segment")(type "KiCad")(uri "C:/Users/Jake4/Documents/GitHub/flow-control/hardware/kicad/footprints/Display_7Segment.pretty")(options "")(descr ""))
 )
