@@ -136,14 +136,20 @@ void loop() {
   //Serial.println(value.minutes);
   // If count has changed print the new value to serial
   if(counter != lastCounter)
+  {
     lastCounter = counter;
     dial_encoder(counter);
+  }
   /*
   if (digitalRead(SOL1_SW_SEL) == HIGH || digitalRead(SOL2_SW_SEL) == HIGH || digitalRead(SOL3_SW_SEL) == HIGH)
     solenoid_switch(digitalRead(SOL1_SW_SEL) == HIGH ? 1 : (digitalRead(SOL2_SW_SEL) == HIGH ? 2 : 3));
   */
   if (digitalRead(ENC_SW) == LOW)
+  {
     press_encoder();
+    // Midterm exclusive temporary measure.
+    solenoid_flow(1, counter);
+  }
 
 
   /*
@@ -219,10 +225,20 @@ void solenoid_switch(int ID){
     solenoidSelect = ID;
     solenoidEditing = 1;
   }
+  // If 1: display dELy
+  //  SEG_B | SEG_C | SEG_D | SEG_E | SEG_G
+  //  SEG_A | SEG_D | SEG_E | SEG_F | SEG_G
+  //  SEG_D | SEG_E | SEG_F
+  //  SEG_B | SEG_C | SEG_D | SEG_F | SEG_G
+  // If 2: display durA
+  //  SEG_B | SEG_C | SEG_D | SEG_E | SEG_G
+  //  SEG_C | SEG_D | SEG_E
+  //  SEG_E | SEG_G
+  //  SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G
   if(solenoidEditing == 1)
-    displayText(SEG_A, SEG_A, SEG_A, SEG_A, 2.0f);
+    displayText(SEG_B | SEG_C | SEG_D | SEG_E | SEG_G, SEG_A | SEG_D | SEG_E | SEG_F | SEG_G, SEG_D | SEG_E | SEG_F, SEG_B | SEG_C | SEG_D | SEG_F | SEG_G, 2.0f);
   else
-    displayText(SEG_A, SEG_A, SEG_A, SEG_A, 2.0f);
+    displayText(SEG_B | SEG_C | SEG_D | SEG_E | SEG_G, SEG_C | SEG_D | SEG_E, SEG_E | SEG_G, SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G, 2.0f);
 }
 
 void read_encoder() {
@@ -259,6 +275,8 @@ void read_encoder() {
     counter = counter + changevalue;              // Update counter
     encval = 0;
   }
+  if (counter < 0)
+    counter = 0;
 } 
 
 // Base 10 to Hours:Minutes, take the value that's interpreted in minutes, and return it in a HH:MM format.
@@ -275,6 +293,7 @@ HrAndMin base10ToHHMM(int16_t input)
 
 void displayText(uint8_t first, uint8_t second, uint8_t third, uint8_t fourth, float duration)
 {
+  // Suggestion: Prematurely cancel the delay if the knob is turned.
   uint8_t segment_data[] = {first, second, third, fourth};
   seg.displayClear();
   seg.displayColon(0);
