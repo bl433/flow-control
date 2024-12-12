@@ -25,3 +25,5 @@ October 28th, 2024
  - Assembled solderless breadboard circuit and installed waterproof cables for solenoids
 November 13th, 2024
 - Test out the project's functions prior to the presentation midterm.
+December 12th, 2024
+- Worked on the module board and mother board. Soldered them to be ready to present on 12/19.
