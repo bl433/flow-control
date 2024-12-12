@@ -1,5 +1,5 @@
 flow-control (12V, 2A each) logbook [Fall Semester, 2024]
-Bruce Le, mohammad
+Bruce Le, mohammad, Felipre
 September 3rd, 2024
  - Initiated project, proposed solenoid valve manager
  - Placed order for two solenoid valves
@@ -23,3 +23,5 @@ October 17th, 2024
  - Test operated solenoids through an Arduino blink function
 October 28th, 2024
  - Assembled solderless breadboard circuit and installed waterproof cables for solenoids
+November 13th, 2024
+- Test out the project's functions prior to the presentation midterm.
