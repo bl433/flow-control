@@ -1,8 +1,8 @@
 /* ECET-430 Midterm - Flow Control Prototype
   We want this to exhibit the basics of what we're doing.
   Eventually we'll evolve this to two solenoids, but three and four is a pipe dream unless we can expand the IO pins.
-  Each solenoid will be backed with a master switch
-   
+  Each solenoid will be backed with a master switch.
+  
 */
 
 //================//
@@ -14,14 +14,14 @@
 #define ENC_B 3
 #define ENC_SW 12
 // MAIN - Main decision switch. Solenoid will not flow or count down if not receiving 5v. (off)
-#define SOL1_MAIN 5
 // OUT - Output valve control. Linked to the green LED.
-#define SOL1_OUT 6
 // WAIT - Hold visual. Linked to the red LED.
-#define SOL1_WAIT 4
 // SW_SEL - Pushbutton to select solenoid for configuration. Push once for Delay, push twice for Duration.
-#define SOL1_SW_SEL 7
 // SW_FORCE - Pushbutton to forcefully enable SOL1_OUT. This doesn't even need to exist and can be linked to a 5V.
+#define SOL1_MAIN 5
+#define SOL1_OUT 6
+#define SOL1_WAIT 4
+#define SOL1_SW_SEL 7
 //#define SOL1_SW_FORCE 11
 #define SOL2_MAIN 8
 #define SOL2_OUT 9
@@ -36,13 +36,15 @@
 #define SOL3_SW_SEL 17
 
 #define HOUR_CONVERT 60
-
 #include "HT16K33.h"
 
 unsigned long _lastIncReadTime = micros(); 
 unsigned long _lastDecReadTime = micros(); 
 int _pauseLength = 25000;
 int _fastIncrement = 10;
+int _delaysPerSecond = 10;
+int delayCount = 0;
+#define ONE_SECOND 1000
 
 //======================//
 // VARIABLE DEFINITIONS //
@@ -54,11 +56,15 @@ bool solenoidEnabled[] = {false, false, false};
 int solenoidDuration[] = {0, 0, 0};
 // Solenoids with individual delay counters, in minutes.
 // Neither the delay or duration counters can go below 0.
-int solenoidDelay[] = {0, 0, 0};
+int solenoidDelay[] = {1, 2, 3};
 // Current solenoid. Ranges from 1 to 3.
 int solenoidSelect = 1;
 // Editing what part of that solenoid. 1 for delay, 2 for duration.
 int solenoidEditing = 1;
+// Counters. These go down one for every minute.
+//  They'd be normally what, 60, 120, 180 minutes? Setting these to 1, 2, and 3 is just for the presentation tomorrow.
+int solenoidCounters[] = {1, 2, 3};
+int secondCounter = 0;
 
 struct HrAndMin {
   int16_t hours;
@@ -94,6 +100,9 @@ void read_encoder();
 void dial_encoder(int newValue);
 // Not included for the encoder module, but we'll want it to perform a saving action.
 void press_encoder();
+// Every second that passes, run a step up, and check if that step goes past any of the set counters.
+// And when that happens, flow.
+void proc_second();
 // We'll translate the raw counter numbers into hours, minutes, and seconds.
 // This one function is double-purposed since if the value is in seconds, it'll be MMSS anyway.
 int16_t base10ToHHMM();
@@ -102,89 +111,101 @@ void displayText(uint8_t first, uint8_t second, uint8_t third, uint8_t fourth, i
 void display10ToHHMM(int value);
 
 void setup() {
-
+  // Start the serial monitor to show output
+  Serial.begin(115200);
   // Set encoder pins and attach interrupts
+  // Encoder knob
   pinMode(ENC_A, INPUT_PULLUP);
   pinMode(ENC_B, INPUT_PULLUP);
   pinMode(ENC_SW, INPUT_PULLUP);
-  pinMode(SOL1_OUT, OUTPUT);
-  pinMode(SOL1_WAIT, OUTPUT);
+  
   attachInterrupt(digitalPinToInterrupt(ENC_A), read_encoder, CHANGE);
   attachInterrupt(digitalPinToInterrupt(ENC_B), read_encoder, CHANGE);
 
-  // Start the serial monitor to show output
-  Serial.begin(115200);
+  // Set up solenoid modules - comment out some if needed.
+  // First solenoid
+  pinMode(SOL1_MAIN, INPUT);
+  pinMode(SOL1_OUT, OUTPUT);
+  pinMode(SOL1_WAIT, OUTPUT);
+  pinMode(SOL1_SW_SEL, INPUT);
+  // Second solenoid
+  pinMode(SOL2_MAIN, INPUT);
+  pinMode(SOL2_OUT, OUTPUT);
+  pinMode(SOL2_WAIT, OUTPUT);
+  pinMode(SOL2_SW_SEL, INPUT);
+  // Third solenoid
+  pinMode(SOL3_MAIN, INPUT);
+  pinMode(SOL3_OUT, OUTPUT);
+  pinMode(SOL3_WAIT, OUTPUT);
+  pinMode(SOL3_SW_SEL, INPUT);
 
   // Set up counter
   Wire.begin();
   Wire.setClock(100000);
   seg.begin();
 
+  // Set up segment display
   seg.displayOn();
   seg.setBrightness(2);
   seg.displayClear();
   seg.setBlink(0);
   seg.setDigits(1);
+
+  // Initial setup of the delay values.
+  for(int i = 0; i < 3; i++)
+    solenoidCounters[i] = solenoidDelay[i];
   delay(1000);
 }
 
 void loop() {
-  static int lastCounter = 0;
+  delay(ONE_SECOND / _delaysPerSecond);
+  delayCount++;
+  if(delayCount >= _delaysPerSecond)
+    proc_second();
 
-  //HrAndMin value = {23, 55};
-  //Serial.println(value.hours);
-  //Serial.println(value.minutes);
+  static int lastCounter = 0;
   // If count has changed print the new value to serial
   if(counter != lastCounter)
   {
     lastCounter = counter;
     dial_encoder(counter);
   }
-  /*
+  
+  // Pressing any of the switch buttons. NOT the force button.
   if (digitalRead(SOL1_SW_SEL) == HIGH || digitalRead(SOL2_SW_SEL) == HIGH || digitalRead(SOL3_SW_SEL) == HIGH)
-    solenoid_switch(digitalRead(SOL1_SW_SEL) == HIGH ? 1 : (digitalRead(SOL2_SW_SEL) == HIGH ? 2 : 3));
-  */
-  //Serial.println(digitalRead(ENC_SW));
-  //Serial.println("\n");
+    solenoid_switch(digitalRead(SOL1_SW_SEL) == HIGH ? 0 : (digitalRead(SOL2_SW_SEL) == HIGH ? 1 : 2));
   
+  // Pressing the encoder button, which will SET the counter's value to the database.
   if (digitalRead(ENC_SW) == LOW)
-  {
-    Serial.println("YOU HAVE CANCER");
     press_encoder();
-    // Midterm exclusive temporary measure.
-    solenoid_flow(1, counter);
-  }
+
+  // The force buttons are hardcoded. Please don't press two of them at once. Each solenoid runs on TWO AMPS and twelve volts.
+  //  Those MOSFETs heat up real fast even for its thirty-amp capacity, and I got a half-a-degree burn on my finger demonstrating it.
+  //  Either I'm wiring it up wrong, or it's just how two amps is. AT least the MOSFET isn't heating while it's idle.
   
+  
+}
 
-
-  /*
-  static uint32_t last = 0;
-  uint32_t now = millis();
-  if (now != last)
+void proc_second()
+{
+  secondCounter++;
+  if (secondCounter < HOUR_CONVERT)
+    return;
+  // If the second counter reaches 60 (counts from 0 to 59, 60 >= 60), then the following below gets run.
+  // Reset the seconds before anything else.
+  secondCounter = 0;
+  for(int i = 0; i < 3; i++)
   {
-    last = now;
-    uint32_t s = now / 1000;
-    uint32_t t = (now - s * 1000) / 10;
-    Serial.read(t)
-    if (s >= 1000)
+    solenoidCounters[i]--;
+    if (solenoidCounters[i] == 0)
     {
-      m++;
-      if(m > any minute given)
-        h++;
+      // Flow it. The code won't continue due to the duration.
+      solenoid_flow(i, solenoidDuration[i]);
+      // Reset the counter.
+      solenoidCounters[i] = solenoidDelay[i];
     }
-    
-    //digitalWrite(SOL1_WAIT, LOW);
-    // it'll probably blink every minute if it's far, but blink every second if it's close (< 5 minutes)
-
-    s = s % 100;
-    // seg.displayTime(s, t);
-    //seg.displayTime(s, t, true, false);  // do not display leading zero.
-    //seg.displayColon(1);
   }
-  */
-  delay(20);
-  
-  
+    
 }
 
 int solenoid_flow(int ID, int duration)
@@ -202,18 +223,22 @@ int solenoid_flow(int ID, int duration)
   return;
 }
 
+// Press the encoder and set the value to the database.
+//  There's two arrays: delay and duration, split to three containers, one per solenoid.
 void press_encoder(){
   Serial.println(counter);
   switch(solenoidEditing)
   {
-    case 1: solenoidDelay[solenoidSelect - 1] = counter; break;
-    case 2: solenoidDuration[solenoidSelect - 1] = counter; break;
+    case 1: solenoidDelay[solenoidSelect] = counter; break;
+    case 2: solenoidDuration[solenoidSelect] = counter; break;
     default: displayText(SEG_A, SEG_A, SEG_A, SEG_NONE, 2.0f); return;
   }
   // print SEt for 2.5s
   displayText(SEG_A | SEG_F | SEG_G | SEG_C | SEG_D, SEG_A | SEG_D | SEG_E | SEG_F | SEG_G, SEG_F | SEG_E | SEG_G | SEG_D, SEG_NONE, 2.0f);
 }
 
+// Dial the encoder and change the counter value.
+//  At the same time, let the user know how high they're setting the counter.
 void dial_encoder(int newValue) {
     //counter = newValue;
     //lastCounter = counter;
@@ -224,26 +249,41 @@ void dial_encoder(int newValue) {
 void solenoid_switch(int ID){
   // If it's the same switch, switch between delay and duration. The second press leads to the selected solenoid's duration.
   if(solenoidSelect == ID)
+  {
     solenoidEditing = (solenoidEditing == 1 ? 2 : 1);
+    Serial.print("Switched between delay and duration: ");
+    Serial.println(solenoidEditing);
+  }
   else
   {
+    // Select the new solenoid, and load the values to the counter.
     solenoidSelect = ID;
     solenoidEditing = 1;
+    
+    Serial.println("Selecting different solenoid");
   }
-  // If 1: display dELy
-  //  SEG_B | SEG_C | SEG_D | SEG_E | SEG_G
-  //  SEG_A | SEG_D | SEG_E | SEG_F | SEG_G
-  //  SEG_D | SEG_E | SEG_F
-  //  SEG_B | SEG_C | SEG_D | SEG_F | SEG_G
-  // If 2: display durA
-  //  SEG_B | SEG_C | SEG_D | SEG_E | SEG_G
-  //  SEG_C | SEG_D | SEG_E
-  //  SEG_E | SEG_G
-  //  SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G
+  /*
+    If 1: display dELy
+     SEG_B | SEG_C | SEG_D | SEG_E | SEG_G
+     SEG_A | SEG_D | SEG_E | SEG_F | SEG_G
+     SEG_D | SEG_E | SEG_F
+     SEG_B | SEG_C | SEG_D | SEG_F | SEG_G
+    If 2: display durA
+     SEG_B | SEG_C | SEG_D | SEG_E | SEG_G
+     SEG_C | SEG_D | SEG_E
+     SEG_E | SEG_G
+     SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G
+  */
   if(solenoidEditing == 1)
+  {
+    counter = solenoidDelay[solenoidSelect];
     displayText(SEG_B | SEG_C | SEG_D | SEG_E | SEG_G, SEG_A | SEG_D | SEG_E | SEG_F | SEG_G, SEG_D | SEG_E | SEG_F, SEG_B | SEG_C | SEG_D | SEG_F | SEG_G, 2.0f);
+  }
   else
+  {
+    counter = solenoidDuration[solenoidSelect];
     displayText(SEG_B | SEG_C | SEG_D | SEG_E | SEG_G, SEG_C | SEG_D | SEG_E, SEG_E | SEG_G, SEG_A | SEG_B | SEG_C | SEG_E | SEG_F | SEG_G, 2.0f);
+  }
 }
 
 void read_encoder() {
@@ -280,8 +320,11 @@ void read_encoder() {
     counter = counter + changevalue;              // Update counter
     encval = 0;
   }
-  if (counter < 0)
-    counter = 0;
+  // The counter can never go below 0. Neither can it go above the max define.
+  if (counter < SOL_MIN)
+    counter = SOL_MIN;
+  else if (counter < SOL_MAX)
+    counter = SOL_MAX;
 } 
 
 // Base 10 to Hours:Minutes, take the value that's interpreted in minutes, and return it in a HH:MM format.
