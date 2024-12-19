@@ -1026,7 +1026,7 @@
 		(uuid "2f0b64d0-3cd0-4bd3-b058-69fbf43df4a3")
 	)
 	(hierarchical_label "VCC_R"
-		(shape output)
+		(shape input)
 		(at 26.67 77.47 180)
 		(fields_autoplaced yes)
 		(effects
@@ -1356,117 +1356,6 @@
 					(unit 1)
 				)
 			)
-		)
-	)
-	(sheet
-		(at 170.18 115.57)
-		(size 17.78 22.86)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "1ba0f4d1-5c7d-4614-ba09-46cb45289de3")
-		(property "Sheetname" "Solenoid 2 Output1"
-			(at 170.18 114.8584 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sol1_output.kicad_sch"
-			(at 170.18 139.0146 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "SETTING" input
-			(at 170.18 118.11 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "0e8b2067-6f22-40c6-90c1-810da13a165e")
-		)
-		(pin "MAIN" input
-			(at 170.18 123.19 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "7dd735bf-f69f-4aa4-bad0-0551033ad91b")
-		)
-		(pin "RED" input
-			(at 170.18 125.73 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "03570752-32f7-4939-b3cf-f0d0503ec44f")
-		)
-		(pin "5V" input
-			(at 170.18 128.27 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "33874fbb-da9c-4f8a-893a-a5ee83b8d440")
-		)
-		(pin "TRIGGER" input
-			(at 170.18 120.65 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "1a3b5d05-1bc3-4e92-9c86-f0e2416f02c5")
-		)
-		(pin "12V_SUPPLY" input
-			(at 182.88 138.43 270)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "36c44ba3-48b3-426a-939d-2226db56a64a")
-		)
-		(pin "GND_SUPPLY" input
-			(at 185.42 138.43 270)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "f9204fda-bec8-4fd5-92b5-5e945bb10463")
-		)
-		(pin "GND" input
-			(at 170.18 130.81 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "98571bcc-4c60-4fed-a38f-e0aa830bf683")
 		)
 	)
 )
