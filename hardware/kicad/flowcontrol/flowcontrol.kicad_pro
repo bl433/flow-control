@@ -581,11 +581,11 @@
     ],
     [
       "862b8b50-7656-48d5-b6a2-1748483f71db",
-      "Solenoid 1 Inputs"
+      "Input Display"
     ],
     [
-      "f632a596-2a77-458a-80f1-cd2c27313419",
-      "Solenoid 2 Inputs"
+      "3617b73e-96c8-4426-b013-812706bcbb3c",
+      "Solenoid 2 Output"
     ],
     [
       "21aff996-0b09-425d-9ddf-2ee2460dab57",
@@ -596,16 +596,12 @@
       "Solenoid 1 Output"
     ],
     [
-      "26d69ebe-2b14-4723-aef8-59425f36d1f3",
-      "Solenoid 2 Output"
+      "935856d6-0542-4a93-835c-8a0cd6db9fff",
+      "Solenoid 3 Output"
     ],
     [
-      "bda1ed04-6897-4e69-b924-e662610f3fe6",
-      "Solenoid 1 Display"
-    ],
-    [
-      "ff65343e-e678-4d54-acd4-5f7145ef73fd",
-      "Solenoid 2 Display"
+      "1ba0f4d1-5c7d-4614-ba09-46cb45289de3",
+      "Solenoid 2 Output1"
     ]
   ],
   "text_variables": {}

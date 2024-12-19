@@ -820,6 +820,12 @@
 		)
 	)
 	(junction
+		(at 76.2 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "052ffb6b-34a2-441b-a0bd-4e73db682118")
+	)
+	(junction
 		(at 76.2 22.86)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -933,6 +939,16 @@
 	)
 	(wire
 		(pts
+			(xy 76.2 110.49) (xy 80.01 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62e0fd3a-d5bc-4433-a1ac-2d6cc2a477cf")
+	)
+	(wire
+		(pts
 			(xy 91.44 48.26) (xy 106.68 48.26)
 		)
 		(stroke
@@ -979,7 +995,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8fc56efb-9b97-40a1-904c-8de456bbfb7a")
+		(uuid "9992a3a5-22f3-4d22-8bc8-1b57a93b99cc")
 	)
 	(wire
 		(pts
@@ -1010,6 +1026,16 @@
 			(type default)
 		)
 		(uuid "ad741d20-ddfb-44d2-a3f8-c70670d848b5")
+	)
+	(wire
+		(pts
+			(xy 91.44 43.18) (xy 106.68 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af448375-9c8f-4b60-837f-4657183c26bd")
 	)
 	(wire
 		(pts
@@ -1101,7 +1127,7 @@
 		)
 		(uuid "f90b4f23-3433-4cfe-a395-d241833db908")
 	)
-	(hierarchical_label "SOL1_DURA"
+	(hierarchical_label "SOL2_SEL"
 		(shape output)
 		(at 106.68 48.26 0)
 		(fields_autoplaced yes)
@@ -1113,7 +1139,7 @@
 		)
 		(uuid "08527b60-4310-4016-bddf-c4c44836c10d")
 	)
-	(hierarchical_label "SOL2_CLOCK"
+	(hierarchical_label "SOL3_WAIT"
 		(shape output)
 		(at 106.68 68.58 0)
 		(fields_autoplaced yes)
@@ -1125,7 +1151,7 @@
 		)
 		(uuid "1627ff3b-4603-4247-aa06-a7fcf033bd89")
 	)
-	(hierarchical_label "SOL1_GREEN"
+	(hierarchical_label "SOL1_OUT"
 		(shape output)
 		(at 106.68 99.06 0)
 		(fields_autoplaced yes)
@@ -1136,18 +1162,6 @@
 			(justify left)
 		)
 		(uuid "16bd8030-7287-4418-ab05-9f6dada278f6")
-	)
-	(hierarchical_label "SOL1_DELAY"
-		(shape output)
-		(at 106.68 50.8 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1e850be2-273d-4366-9f0a-f0ea5523a7b4")
 	)
 	(hierarchical_label "GND"
 		(shape input)
@@ -1161,7 +1175,7 @@
 		)
 		(uuid "26426431-27b2-4da8-b7a3-7643f1d0296b")
 	)
-	(hierarchical_label "SOL2_RED"
+	(hierarchical_label "SOL1_MAIN"
 		(shape output)
 		(at 106.68 96.52 0)
 		(fields_autoplaced yes)
@@ -1198,7 +1212,7 @@
 		)
 		(uuid "50d7a899-18a0-4ea9-838d-ae6746430f98")
 	)
-	(hierarchical_label "SOL2_DURA"
+	(hierarchical_label "SOL3_SEL"
 		(shape output)
 		(at 106.68 71.12 0)
 		(fields_autoplaced yes)
@@ -1210,7 +1224,43 @@
 		)
 		(uuid "672ecede-207f-484f-b43b-5182b2afca1d")
 	)
-	(hierarchical_label "SOL1_CHECK"
+	(hierarchical_label "GND"
+		(shape output)
+		(at 80.01 110.49 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "733660fd-f49e-4ede-8b0a-0b910c43909a")
+	)
+	(hierarchical_label "ENC_SW"
+		(shape output)
+		(at 106.68 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "766e846c-59a4-447b-b597-fcc9d43b874c")
+	)
+	(hierarchical_label "SOL2_OUT"
+		(shape output)
+		(at 106.68 43.18 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9039298a-948e-445f-9069-a48309e6d940")
+	)
+	(hierarchical_label "ENC_A"
 		(shape output)
 		(at 106.68 88.9 0)
 		(fields_autoplaced yes)
@@ -1222,7 +1272,7 @@
 		)
 		(uuid "90bca510-aa58-4002-8124-9e092498166b")
 	)
-	(hierarchical_label "SOL1_CLOCK"
+	(hierarchical_label "SOL2_WAIT"
 		(shape output)
 		(at 106.68 45.72 0)
 		(fields_autoplaced yes)
@@ -1234,7 +1284,7 @@
 		)
 		(uuid "9c71a1df-9703-4865-a46d-0ae93e6a5397")
 	)
-	(hierarchical_label "SOL2_CHECK"
+	(hierarchical_label "ENC_B"
 		(shape output)
 		(at 106.68 91.44 0)
 		(fields_autoplaced yes)
@@ -1246,7 +1296,7 @@
 		)
 		(uuid "a1620383-db64-4820-83b8-bb7e1d2d62f3")
 	)
-	(hierarchical_label "SOL2_DELAY"
+	(hierarchical_label "SOL3_OUT"
 		(shape output)
 		(at 106.68 66.04 0)
 		(fields_autoplaced yes)
@@ -1258,7 +1308,7 @@
 		)
 		(uuid "b0d74079-669d-4c9e-83e1-7e77347e0402")
 	)
-	(hierarchical_label "SOL1_RED"
+	(hierarchical_label "SOL1_WAIT"
 		(shape output)
 		(at 106.68 93.98 0)
 		(fields_autoplaced yes)
@@ -1270,7 +1320,7 @@
 		)
 		(uuid "d3236b97-faaf-477d-8eaa-e03596ac7739")
 	)
-	(hierarchical_label "SOL2_GREEN"
+	(hierarchical_label "SOL1_SEL"
 		(shape output)
 		(at 106.68 101.6 0)
 		(fields_autoplaced yes)
@@ -1306,7 +1356,7 @@
 		)
 		(uuid "e1b69933-1ec4-4bb0-b8c4-a48194cd80f6")
 	)
-	(hierarchical_label "SOL1_CONF"
+	(hierarchical_label "SOL2_MAIN"
 		(shape output)
 		(at 106.68 40.64 0)
 		(fields_autoplaced yes)
@@ -1318,7 +1368,7 @@
 		)
 		(uuid "f7b509a2-470c-4600-a7a1-8de8d7a617ce")
 	)
-	(hierarchical_label "SOL2_CONF"
+	(hierarchical_label "SOL3_MAIN"
 		(shape output)
 		(at 106.68 63.5 0)
 		(fields_autoplaced yes)
