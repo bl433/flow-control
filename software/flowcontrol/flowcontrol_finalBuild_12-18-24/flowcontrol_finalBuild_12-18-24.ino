@@ -65,6 +65,7 @@ int solenoidEditing = 1;
 //  They'd be normally what, 60, 120, 180 minutes? Setting these to 1, 2, and 3 is just for the presentation tomorrow.
 int solenoidCounters[] = {1, 2, 3};
 int secondCounter = 0;
+int blinkState = LOW;
 
 struct HrAndMin {
   int16_t hours;
@@ -103,6 +104,7 @@ void press_encoder();
 // Every second that passes, run a step up, and check if that step goes past any of the set counters.
 // And when that happens, flow.
 void proc_second();
+void check_mains();
 // We'll translate the raw counter numbers into hours, minutes, and seconds.
 // This one function is double-purposed since if the value is in seconds, it'll be MMSS anyway.
 int16_t base10ToHHMM();
@@ -154,12 +156,17 @@ void setup() {
   // Initial setup of the delay values.
   for(int i = 0; i < 3; i++)
     solenoidCounters[i] = solenoidDelay[i];
+  
+  digitalWrite(SOL1_WAIT, LOW);
+  digitalWrite(SOL2_WAIT, LOW);
+  digitalWrite(SOL3_WAIT, LOW);
   delay(1000);
 }
 
 void loop() {
   delay(ONE_SECOND / _delaysPerSecond);
   delayCount++;
+  check_mains();
   if(delayCount >= _delaysPerSecond)
     proc_second();
 
@@ -188,7 +195,18 @@ void loop() {
 
 void proc_second()
 {
+  delayCount = 0;
   secondCounter++;
+  
+  Serial.print("Seconds: ");
+  Serial.println(secondCounter);
+  // Switch states.
+  //blinkState
+  if (blinkState == HIGH)
+    blinkState = LOW;
+  else
+    blinkState = HIGH;
+
   if (secondCounter < HOUR_CONVERT)
     return;
   // If the second counter reaches 60 (counts from 0 to 59, 60 >= 60), then the following below gets run.
@@ -197,6 +215,7 @@ void proc_second()
   for(int i = 0; i < 3; i++)
   {
     solenoidCounters[i]--;
+    Serial.println(solenoidCounters[i]);
     if (solenoidCounters[i] == 0)
     {
       // Flow it. The code won't continue due to the duration.
@@ -205,16 +224,38 @@ void proc_second()
       solenoidCounters[i] = solenoidDelay[i];
     }
   }
-    
+  
+}
+
+// Checks for each switch. If it's reading high, then the solenoid is enabled.
+void check_mains()
+{
+  digitalWrite(SOL1_WAIT, (digitalRead(SOL1_MAIN) == LOW ? LOW : blinkState));
+  digitalWrite(SOL2_WAIT, (digitalRead(SOL2_MAIN) == LOW ? LOW : blinkState));
+  digitalWrite(SOL3_WAIT, (digitalRead(SOL3_MAIN) == LOW ? LOW : blinkState));
+  // check every tick.
+  // but also blink the red light every second's worth of ticks.
+
 }
 
 int solenoid_flow(int ID, int duration)
 {
+  Serial.print("Flowing ");
+  Serial.println(ID);
   switch(ID)
   {
-    case 1: digitalWrite(SOL1_OUT, HIGH); break;
-    case 2: digitalWrite(SOL2_OUT, HIGH); break;
-    case 3: digitalWrite(SOL3_OUT, HIGH); break;
+    case 0:
+      if (digitalRead(SOL1_MAIN) == LOW)
+        return;
+      digitalWrite(SOL1_OUT, HIGH); digitalWrite(SOL1_WAIT, LOW); break;
+    case 1:
+      if (digitalRead(SOL2_MAIN) == LOW)
+        return;
+      digitalWrite(SOL2_OUT, HIGH); digitalWrite(SOL2_WAIT, LOW); break;
+    case 2:
+      if (digitalRead(SOL3_MAIN) == LOW)
+        return;
+      digitalWrite(SOL3_OUT, HIGH); digitalWrite(SOL3_WAIT, LOW); break;
   }
   delay(duration * 1000);
   digitalWrite(SOL1_OUT, LOW);
@@ -229,7 +270,7 @@ void press_encoder(){
   Serial.println(counter);
   switch(solenoidEditing)
   {
-    case 1: solenoidDelay[solenoidSelect] = counter; break;
+    case 1: solenoidDelay[solenoidSelect] = counter; solenoidCounters[solenoidSelect] = counter; break;
     case 2: solenoidDuration[solenoidSelect] = counter; break;
     default: displayText(SEG_A, SEG_A, SEG_A, SEG_NONE, 2.0f); return;
   }
@@ -323,7 +364,7 @@ void read_encoder() {
   // The counter can never go below 0. Neither can it go above the max define.
   if (counter < SOL_MIN)
     counter = SOL_MIN;
-  else if (counter < SOL_MAX)
+  else if (counter > SOL_MAX)
     counter = SOL_MAX;
 } 
 
