@@ -1038,7 +1038,7 @@
 		(uuid "3cd82e7b-b18d-49a6-bb59-659e7a333c54")
 	)
 	(hierarchical_label "12V_R"
-		(shape input)
+		(shape output)
 		(at 26.67 72.39 180)
 		(fields_autoplaced yes)
 		(effects
@@ -1074,7 +1074,7 @@
 		(uuid "704c18c9-c6dd-41bd-bb01-861d9e290955")
 	)
 	(hierarchical_label "GND_R"
-		(shape input)
+		(shape passive)
 		(at 26.67 74.93 180)
 		(fields_autoplaced yes)
 		(effects
@@ -1158,7 +1158,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E_Vertical_H20mm"
+		(property "Footprint" "Button_Switch_THT:RotaryEncoder_Vertical_H20mm"
 			(at 52.07 25.146 0)
 			(effects
 				(font
@@ -1235,7 +1235,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-218-3_Vertical"
 			(at 56.515 76.2 0)
 			(effects
 				(font
@@ -1310,7 +1310,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 55.88 54.61 0)
 			(effects
 				(font
