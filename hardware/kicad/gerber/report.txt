@@ -1,0 +1,14 @@
+Warning: Width correction constrained.  The width correction value must be in the range of [0.000001 mm; 0.199999 mm] for the current design rules.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-F_Cu.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-In1_Cu.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-In2_Cu.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-B_Cu.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-F_Paste.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-B_Paste.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-F_Silkscreen.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-B_Silkscreen.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-F_Mask.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-B_Mask.gbr'.
+Plotted to 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-Edge_Cuts.gbr'.
+Created Gerber job file 'H:\GitHub\flow-control\hardware\kicad\gerber\flowcontrol_BL-job.gbrjob'.
+Info: Done.
